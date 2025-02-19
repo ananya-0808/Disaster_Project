@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EcoEmergency</title>
+    <link rel="stylesheet" href="page2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+  <img src="circle.png" class="circle">
+  <img src="earth.png" class="earth">
+  <img src="satellite.png" class="satellite" id="satellite" onclick="next()">
+  <div class="container">
+      <div class="box">
+        <div class="title1">
+          <span class="block1"></span>
+          <h1>This represents a model of an AI that does so:</h1>
+      </div>
+    </div>
+  </div>
+  <div class="dots-container">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+  <div class="typing-container">
+    <p class="line typing-effect">Created using python, this model aims</p>
+    <p class="line typing-effect">to create a realistic scenario of how</p>
+    <p class="line typing-effect">an AI would divide up resources based</p>
+    <p class="line typing-effect">on how much an area needs it. Here, it</p>
+    <p class="line typing-effect">generates 4 areas and stores the number</p>
+    <p class="line typing-effect">of resources each area needs as variables</p>
+    <p class="line typing-effect">that can change. The resources here are</p>
+    <p class="line typing-effect">water, food, shelter and medicine, and</p>
+    <p class="line typing-effect">the AI distributes this based on</p>
+    <p class="line typing-effect">available data. This is also done in a</p>
+    <p class="line typing-effect">blockchain manner to maintain</p>
+    <p class="line typing-effect">transparency.</p>
+  </div>
+    <div class="code-container">
+        <pre><code class="python">
+import random
+import time
+import matplotlib.pyplot as plt
+
+areas = ['Area A', 'Area B', 'Area C', 'Area D']
+needs = ['food', 'water', 'medical', 'shelter']
+
+area_data = {
+    area: {
+        'population': random.randint(1000, 10000), 
+        'food_need': random.randint(200, 1000),
+        'water_need': random.randint(100, 500),
+        'medical_need': random.randint(50, 200),
+        'shelter_need': random.randint(100, 500)
+    }
+    for area in areas
+}
+
+resources_available = {
+    'food': 3000,
+    'water': 2000,
+    'medical': 500,
+    'shelter': 1000
+}
+
+def allocate_resources():
+    global resources_available, area_data
+
+    allocations = {}
+
+    for area in area_data:
+        for resource in needs:
+            required = area_data[area][f'{resource}_need']
+            available = resources_available[resource]
+
+            if available >= required:
+                allocations[area] = {resource: required}
+                resources_available[resource] -= required
+            else:
+                allocations[area] = {resource: available}
+                resources_available[resource] -= available
+
+    return allocations
+
+class Blockchain:
+    def __init__(self):
+        self.chain = []
+        self.create_genesis_block()
+
+    def create_genesis_block(self):
+        self.chain.append({'block': 0, 'transactions': 'Genesis Block'})
+
+    def add_block(self, transaction_details):
+        block = {
+            'block': len(self.chain),
+            'transactions': transaction_details
+        }
+        self.chain.append(block)
+
+    def view_chain(self):
+        return self.chain
+
+blockchain = Blockchain()
+
+def log_transaction(allocations):
+    for area, allocation in allocations.items():
+        blockchain.add_block(f"{area} received {allocation}")
+
+def plot_resources():
+    areas = list(area_data.keys())
+    food_needs = [area_data[area]['food_need'] for area in areas]
+    water_needs = [area_data[area]['water_need'] for area in areas]
+    medical_needs = [area_data[area]['medical_need'] for area in areas]
+    shelter_needs = [area_data[area]['shelter_need'] for area in areas]
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    ax.bar(areas, food_needs, label='Food Needs', alpha=0.6)
+    ax.bar(areas, water_needs, label='Water Needs', alpha=0.6)
+    ax.bar(areas, medical_needs, label='Medical Needs', alpha=0.6)
+    ax.bar(areas, shelter_needs, label='Shelter Needs', alpha=0.6)
+
+    ax.set_xlabel('Areas')
+    ax.set_ylabel('Need Level')
+    ax.set_title('Disaster Aid Needs by Area')
+    ax.legend()
+
+    plt.show()
+
+def real_time_monitoring():
+    while True:
+        allocations = allocate_resources()
+        log_transaction(allocations)
+
+        print(f"Allocations: {allocations}")
+        print(f"Resources available: {resources_available}")
+
+        plot_resources()
+
+        time.sleep(5)
+
+real_time_monitoring()
+        </code></pre>
+    </div>
+  <script src="page2.js"></script>
+</body>
+</html>

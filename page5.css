@@ -1,0 +1,504 @@
+body {
+  background-color: #0d0a6a;
+  overflow: hidden; 
+  height:100vh;
+  position: relative;
+}
+
+.code-container {
+  position: fixed;
+  bottom:20px;  
+  left: 950px;   
+  width: 550px; 
+  height: 570px; 
+  overflow-y: auto;  
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;  
+  font-size: 12px;  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+  animation: moveIn2 2s ease-out;
+}
+
+@keyframes moveIn2 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+pre {
+  margin: 0; 
+}
+
+h1{
+  color:rgb(254, 248, 240);
+  font-family: Quicksand, Arial;
+  position: relative; 
+  font-size:3vw;
+  margin:0;
+  animation: secFadeIn 2s forwards;
+  animation-delay: 1s;
+  opacity: 0;
+  color: #ffffff;
+  padding-top:20px;
+  padding-left:20px;
+}
+
+.block1 {
+  width: 0%;
+  height: 150%;
+  background:white;
+  position: absolute;
+  animation: secBlock 2.3s cubic-bezier(.74, .06, .4, .92) forwards;
+  display: flex;
+  margin-top:30px;
+}
+
+@keyframes secBlock {
+  0% {
+    width: 0%;
+    left: 0;
+
+  }
+  50% {
+    width: 75%;
+    left: 0;
+
+  }
+  100% {
+    width: 0;
+    left: 75%;
+  }
+}
+
+@keyframes secFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.box{
+  width: 2000px;
+  height: 600px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.title1{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin-left:15px;
+}
+
+.card {
+  background-color: transparent;
+  width: 350px;
+  height: 190px;
+  bottom: -120px;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  left: 30px; 
+  animation: moveIn1 3s ease-out;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  background-color: #33319B;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.box1 {
+  cursor: pointer;
+  position: relative;
+  width: 350px; 
+}
+
+.text1{
+  font-size: 25px;
+  font-family:Quicksand;
+  padding:5px;
+}
+
+.card2 {
+  background-color: transparent;
+  width: 350px;
+  height: 190px;
+  bottom: 70px;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  left: 550px; 
+  animation: moveIn1 3s ease-out;
+}
+
+.card-inner2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card2:hover .card-inner2 {
+  transform: rotateY(180deg);
+}
+
+.card-front2, .card-back2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back2 {
+  background-color: #33319B;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.box2 {
+  cursor: pointer;
+  position: relative;
+  width: 350px; 
+}
+
+.text2{
+  font-size: 25px;
+  font-family:Quicksand;
+  padding:5px;
+}
+
+.card3 {
+  background-color: transparent;
+  width: 350px;
+  height: 190px;
+  bottom: -90px;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  left: 550px;
+  animation: moveIn1 3s ease-out;
+}
+
+.card-inner3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card3:hover .card-inner3 {
+  transform: rotateY(180deg);
+}
+
+.card-front3, .card-back3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back3 {
+  background-color: #33319B;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.box3 {
+  cursor: pointer;
+  position: relative;
+  width: 350px; 
+}
+
+.text3{
+  font-size: 25px;
+  font-family:Quicksand;
+  padding:5px;
+}
+
+.card4 {
+  background-color: transparent;
+  width: 350px;
+  height: 190px;
+  bottom: 100px;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  left: 30px; 
+  animation: moveIn1 3s ease-out;
+}
+
+.card-inner4 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card4:hover .card-inner4 {
+  transform: rotateY(180deg);
+}
+
+.card-front4, .card-back4 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back4 {
+  background-color: #33319B;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.box4 {
+  cursor: pointer;
+  position: relative;
+  width: 350px; 
+}
+
+.text4{
+  font-size: 25px;
+  font-family:Quicksand;
+}
+
+@keyframes moveIn1 {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn1 {
+  0% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.arrow{
+  position:relative;
+  width:100px;
+  height: 100px;
+  transition:2s;
+  overflow:hidden;
+  margin-left:400px;
+  bottom:830px;
+  transform: scaleX(-1);
+  animation: fadeIn1 5s ease-out;
+}
+
+.arrow:after{
+  position:relative;
+  display:block;
+  content:"";
+  color:white;
+  width: 50px;
+  height: 50px;
+  top:0px;
+  border-bottom:solid 5px;
+  transform:translatex(4px);
+  animation: anArrow02 1.5s cubic-bezier(0, 0.6, 1, 0.4) infinite;
+  transform: translateX(-44px);
+}
+
+.arrow:before{
+  position:relative;
+  display:block;
+  content:"";
+  color:white;
+  width: 17px;
+  height: 17px;
+  border-top:solid 5px;
+  border-left:solid 5px;
+  top:75%;
+  left:1px;
+  transform-origin:0% 0%;
+  transform:rotatez(-45deg);
+  animation: anArrow01 1.5s cubic-bezier(0, 0.6, 1, 0.4) infinite ;
+}
+
+@keyframes anArrow01 {
+  0% {
+    transform:rotatez(-45deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+@keyframes anArrow02 {
+  0% {
+    transform:translateX(45px);
+  }
+  100% {
+    transform:translateX(-44px);
+  }
+}
+
+.arrow2{
+  position:relative;
+  width:100px;
+  height: 100px;
+  transition:2s;
+  overflow:hidden;
+  margin-left:410px;
+  bottom:680px;
+  animation: fadeIn1 5s ease-out;
+}
+
+.arrow2:after{
+  position:relative;
+  display:block;
+  content:"";
+  color:white;
+  width: 50px;
+  height: 50px;
+  top:0px;
+  border-bottom:solid 5px;
+  transform:translatex(4px);
+  animation: anArrow022 1.5s cubic-bezier(0, 0.6, 1, 0.4) infinite;
+  transform: translateX(-44px);
+}
+
+.arrow2:before{
+  position:relative;
+  display:block;
+  content:"";
+  color:white;
+  width: 17px;
+  height: 17px;
+  border-top:solid 5px;
+  border-left:solid 5px;
+  top:75%;
+  left:1px;
+  transform-origin:0% 0%;
+  transform:rotatez(-45deg);
+  animation: anArrow012 1.5s cubic-bezier(0, 0.6, 1, 0.4) infinite;
+}
+
+@keyframes anArrow012 {
+  0% {
+    transform:rotatez(-45deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+@keyframes anArrow022 {
+  0% {
+    transform:translateX(45px);
+  }
+  100% {
+    transform:translateX(-44px);
+  }
+}
+
+.arrow1{
+  position:relative;
+  width:100px;
+  height: 100px;
+  transition:4s;
+  overflow:hidden;
+  margin-left:670px;
+  bottom:730px;
+  transform: scaleX(-1);
+  animation: fadeIn1 5s ease-out;
+}
+
+.arrow1:after{
+  position:relative;
+  display:block;
+  content:"";
+  color:white;
+  width: 50px;
+  height: 50px;
+  top:0px;
+  border-bottom:solid 5px;
+  transform:translatex(4px);
+  animation: anArrow021 1.5s cubic-bezier(0, 0.6, 1, 0.4) infinite;
+  transform: translateY(-44px) rotate(90deg); /* Flip the arrow */
+}
+
+.arrow1:before{
+  position:relative;
+  display:block;
+  content:"";
+  color:white;
+  width: 17px;
+  height: 17px;
+  border-top:solid 5px;
+  border-left:solid 5px;
+  top:75%;
+  left:50px;
+  transform-origin:0% 0%;
+  transform:rotatez(-135deg);
+  animation: anArrow011 1.5s cubic-bezier(0, 0.6, 1, 0.4) infinite ;
+}
+
+@keyframes anArrow011 {
+  0% {
+    transform:rotatez(-135deg) translateY(30px) translateX(30px);
+  }
+  100% {
+    transform: rotatez(-135deg) translateY(-35px) translateX(-35px);
+  }
+}
+
+@keyframes anArrow021 {
+  0% {
+    transform:translateY(-45px) rotate(-90deg);
+  }
+  100% {
+    transform:translateY(44px) rotate(-90deg);
+  }
+}

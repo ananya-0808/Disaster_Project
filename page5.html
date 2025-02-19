@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="page5.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <title>EcoEmergency</title> 
+    <script>hljs.highlightAll();</script>   
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="title1">
+          <span class="block1"></span>
+          <h1>This represents a model of an AI that does so for earthquakes:</h1>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="box11.png" class="box1">
+        </div>
+        <div class="card-back" onclick="next()">
+          <p class="text1">The model sends a request to get the earthquake API from USGS, an online geological database. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card2">
+      <div class="card-inner2">
+        <div class="card-front2">
+          <img src="box12.png" class="box2">
+        </div>
+        <div class="card-back2" onclick="next1()">
+          <p class="text2">The model selects relevant data and then splits it into two categories: Training and Testing. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card3">
+      <div class="card-inner3">
+        <div class="card-front3">
+          <img src="box13.png" class="box3">
+        </div>
+        <div class="card-back3" onclick="next2()">
+          <p class="text3">A random Forest Regression Model uses decision trees to make predictions, which are combined into a single result. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card4">
+      <div class="card-inner4">
+        <div class="card-front4">
+          <img src="box14.png" class="box4">
+        </div>
+        <div class="card-back4" onclick="next3()">
+          <p class="text4"> The model predicts the magnitude based on the trained set, which is then plotted in a scatterplot.</p>
+        </div>
+      </div>
+    </div>
+    <img src="box14.png" class="box4">
+  <div class="arrow"></div>
+  <div class="arrow1"></div>
+  <div class="arrow2"></div>
+    <div class="code-container">
+      <pre><code class="python">
+        import requests
+        import pandas as pd
+        from sklearn.model_selection import train_test_split
+        from sklearn.ensemble import RandomForestRegressor
+        import matplotlib.pyplot as plt
+        from io import StringIO
+        
+        url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+        
+        params = {
+            "format": "csv", 
+            "starttime": "2025-01-01",  
+            "endtime": "2025-02-16",  
+            "minmagnitude": 2.0, 
+            "maxlatitude": 90.0,  
+            "minlatitude": -90.0,
+            "maxlongitude": 180.0, 
+            "minlongitude": -180.0
+        }
+        
+        response = requests.get(url, params=params)
+        
+        if response.status_code == 200:
+            data = pd.read_csv(StringIO(response.text))  
+            print("Fetched data successfully.")
+            print(f"Fetched {len(data)} earthquake records.")
+            print("Column names:", data.columns)  
+            print("First few rows of the data:\n", data.head())  
+        else:
+            print("Error fetching data:", response.status_code)
+        
+        if 'mag' in data.columns:
+            data = data.dropna()  
+        
+            features = ['latitude', 'longitude', 'depth'] 
+            target = 'mag'
+
+            X = data[features]
+            y = data[target]
+      
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2) 
+
+            print(f"Training data shape: X_train: {X_train.shape}, y_train: {y_train.shape}")
+        
+            model_rf = RandomForestRegressor(random_state=42)
+            model_rf.fit(X_train, y_train)
+        
+            print(f"Random Forest model fitted.")
+        
+            predictions_rf = model_rf.predict(X_test)
+        
+            print("Making prediction for new data...")
+            try:
+                new_data = [[34.0522, -118.2437, 10]] 
+
+                predicted_magnitude_rf = model_rf.predict(new_data)
+                print(f"Predicted Magnitude (Random Forest) for the new earthquake: {predicted_magnitude_rf[0]}")
+        
+            except Exception as e:
+                print(f"Error during prediction: {e}")
+        
+            plt.scatter(y_test, predictions_rf)
+            plt.xlabel('Actual Magnitude')
+            plt.ylabel('Predicted Magnitude')
+            plt.title('Earthquake Magnitude Prediction - Random Forest')
+            plt.show()
+
+        else:
+            print("'magnitude' column not found in the dataset.")
+        
+      </code></pre>
+    </div>
+    <script src="page5.js"></script>
+  </body>
